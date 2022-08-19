@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+
+.activo {
+    @apply font-bold text-2xl; 
+}
+
+.pantalla {
+    
+    @apply text-3xl font-black;
+
+}
+
+.tracker {
+
+    @apply p-3 text-center h-[60vh] overflow-y-scroll bg-slate-200;
+}
+
+.player {
+
+    @apply py-4 grid grid-cols-1 gap-4 justify-center place-items-center sm:grid-cols-2 lg:grid-cols-3;
+
+
+}
+audio {
+    @apply  min-w-[390px];
+}
+
+.link{
+    @apply text-white block p-5 font-bold hover:text-yellow-500
+}

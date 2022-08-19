@@ -1,22 +1,75 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="relative">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aprende ingles o destruye tus oidos</title>
-    <link rel="stylesheet" href="css/style.css">
+
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<nav>
 
-</nav>
+    <nav class="bg-gray-800 flex justify-between lg:justify-start items-center">
+        <div class="logo flex-initial p-2 w-1/6">
+            <img src="img/logo.png" width="100" alt="">
+        </div>
+        <div class="links lg:block hidden w-1/6 md:w-4/6">
+            <ul class="flex menu items-center justify-center gap-5">
+                <li><a href="#" class="link">Home</a></li>
+                <li><a href="#" class="link">Play Together</a></li>
+                <li><a href="#"class="link">Explore</a></li>
+                <li><a href="#"class="border-4 border-yellow-400 text-white font-bold p-2 rounded-full align-middle transition duration-500 hover:bg-white hover:text-black">Browser Fury</a></li>
+                <li><a href="#"class="rounded-full bg-red-500 text-white font-bold px-4 py-3 hover:bg-white hover:text-black transition duration-500">Buy Now</a></li>
+            </ul>
+        </div>
+
+        <div class="block lg:hidden w-1/6 lg:w-4/6">
+            <a href="#" class="link" id="mobile-menu">Menu</a>
+
+            <ul class="mobile-links hidden w-full absolute z-50 left-0 text-center bg-gray-800">
+                <li><a href="#" class="link">Home</a></li>
+                <li><a href="#" class="link">Play Together</a></li>
+                <li><a href="#"class="link">Explore</a></li>
+                <li><a href="#"class="my-4 inline-block border-4 border-yellow-400 text-white font-bold p-2 rounded-full align-middle transition duration-500 hover:bg-white hover:text-black">Browser Fury</a></li>
+                <li><a href="#"class="my-4 inline-block rounded-full bg-red-500 text-white font-bold px-4 py-3 hover:bg-white hover:text-black transition duration-500">Buy Now</a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+
     <main>
+        <div class="player grid lg:grid-cols-2 place-items-center grid-flow-row">
+            <div class="">
 
+                <audio controls class="w-[390px]">
+                    <source src="files/growgarden.mp3" />
+                    <track src="files/growgarden.vtt" default label="ingles" lang="en" />
+                </audio>
+            </div>
+
+            <div class="pantalla text-center">
+                Ready!
+            </div>
+        </div>
+
+        <div class="tracker">
+        </div>
+       
     </main>
-<footer>
-<script src="js/artes-oscuras.js"></script>
-</footer>
-    
+    <footer class="absolute bottom-0 text-center w-full">
+        Que chulada ulala
+        <script src="js/artes-oscuras.js"></script>
+        <script>
+            let menu =  document.getElementById('mobile-menu');
+            menu.addEventListener('click', function (e) {
+                let menu = document.querySelector('.mobile-links');
+
+                menu.classList.toggle('hidden');
+
+            });
+        </script>
+    </footer> 
 </body>
 </html>
