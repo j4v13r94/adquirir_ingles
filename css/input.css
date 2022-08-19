@@ -2,22 +2,45 @@
 @tailwind components;
 @tailwind utilities;
 
-
+/* Works on Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #b45309  #115e59
+    ;
+  }
+  
+  /* Works on Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 12px;
+  }
+  
+  *::-webkit-scrollbar-track {
+    background: #115e59;
+  }
+  
+  *::-webkit-scrollbar-thumb {
+    background-color: #b45309;
+    border-radius: 5px;
+    border: 3px solid #f59f0bc3;
+  }
 
 
 .activo {
-    @apply font-bold text-2xl; 
+    @apply font-bold text-2xl;
+    text-decoration: underline 3px; 
 }
 
 .pantalla {
     
-    @apply text-3xl font-black;
+    @apply text-3xl font-black rounded text-orange-600 bg-black text-center py-2;
+    min-width: 180px;
 
 }
 
 .tracker {
 
-    @apply p-3 text-center h-[60vh] overflow-y-scroll bg-slate-200;
+    @apply p-3 text-center h-[75vh] overflow-y-scroll;
+
 }
 
 .player {
@@ -27,7 +50,7 @@
 
 }
 audio {
-    @apply  min-w-[390px];
+    @apply  min-w-[360px];
 }
 
 .link{

@@ -40,7 +40,7 @@ const remarcar = (id , state , texto) => {
 
 let span = document.getElementById(id);
 span.classList.toggle("activo");
-(state)? (span.style.color = config.color , 
+(state)? (span.style.color = "#fde047" , 
     pantalla.textContent = texto.replace('.', '').replace(',','')  ) : span.style.color ='';  
 
 
