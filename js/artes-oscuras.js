@@ -1,11 +1,11 @@
 let track = document.querySelector('track');
 let pantalla = document.querySelector('.pantalla');
-let config = {
-    fondo : "#000",
-    color : "#000",
-    colorA : "#000",
-    size : "24px",
-}
+let input = document.getElementById('add-texto');
+let sub = document.querySelector('.agregar');
+let audio = document.querySelector('audio');
+
+
+
 
 
 
@@ -22,6 +22,8 @@ let resultado = document.querySelector('.tracker');
         let span = document.createElement("SPAN");
         span.innerHTML = (cue.text.indexOf('.') == -1)? cue.text : cue.text + "<br>" ;
         span.setAttribute("id",cue.id)
+        span.onclick = () => audio.currentTime = cue.startTime
+        
         let p = document.createElement("SPAN");
         p.textContent=" ";
         frag.appendChild(span)
@@ -31,6 +33,11 @@ let resultado = document.querySelector('.tracker');
 
 resultado.appendChild(frag)
 
+    resultado.addEventListener('dblclick', function (e) {
+        let {tagName, id , textContent} = e.target;
+        (tagName == "SPAN" && textContent.length > 1 )? e.target.style.textDecoration = "underline 2px" : null ;
+        (tagName == "SPAN" && input.value.length > 0)? input.value = input.value+" "+textContent : (tagName == "SPAN")? input.value = textContent : null;
+        });
 
 });
 
@@ -46,3 +53,60 @@ span.classList.toggle("activo");
 
 
 }
+
+
+
+
+const Agregar = (texto,id=null) => {
+
+    texto = texto.replace('.',"").replace(",","").trim();
+    if(localStorage.length > 0 ){
+
+        let palabras,state;
+        palabras = localStorage.getItem('palabras');
+        state = palabras.split(";").indexOf(texto);
+        
+        console.log(state);
+        if( state == -1 && texto ){
+            localStorage.setItem('palabras' , `${palabras};${texto}`) 
+            return true;
+            }else return false;
+       
+
+    }else { localStorage.setItem('palabras' , texto );  return true};
+
+} 
+
+
+
+    
+
+sub.onsubmit = (event)=> {
+
+    event.preventDefault()
+    let texto = input.value
+    let result = Agregar(texto)
+
+
+    if(result){
+        Swal.fire({
+            title: 'success!',
+            text: 'Agregado : '+texto,
+            icon: 'success',
+            confirmButtonText: 'Perfect!'
+            })
+    }else {
+        Swal.fire({
+            title: 'Error!',
+            text: 'Ya existe : '+texto,
+            icon: 'error',
+            confirmButtonText: 'Sad!!'
+            })
+    }
+
+
+input.value = ""
+
+};
+
+

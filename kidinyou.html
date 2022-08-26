@@ -8,7 +8,9 @@
 
 <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="bg-gray-400 ">
+<body class="bg-gray-400  text-xl">
+    
+
 
     <nav class="bg-gray-800 flex justify-between lg:justify-start items-center">
         <div class="logo flex-initial p-2 w-1/6">
@@ -19,45 +21,78 @@
                 <li><a href="./" class="link">Growgarden</a></li>
                 <li><a href="kidinyou.html" class="link">kidinyou</a></li>
                 <li><a href="limelight.html"class="link">Limelight</a></li>
-                <li><a href="#"class="rounded-full bg-red-500 text-white font-bold px-4 py-3 hover:bg-white hover:text-black transition duration-500">Donar</a></li>
+                <li><a href="hablar.html"class="rounded-full bg-red-500 text-white font-bold px-4 py-3 hover:bg-white hover:text-black transition duration-500">Hablar</a></li>
             </ul>
         </div>
 
-        <div class="block lg:hidden w-1/6 lg:w-4/6">
+        <div class="block lg:hidden  lg:w-4/6">
             <a href="#" class="link" id="mobile-menu">Menu</a>
 
             <ul class="mobile-links hidden w-full absolute z-50 left-0 text-center bg-gray-800">
                 <li><a href="./" class="link">Growgarden</a></li>
                 <li><a href="kidinyou.html" class="link">kidinyou</a></li>
                 <li><a href="limelight.html"class="link">Limelight</a></li>
-                <li><a href="#"class="my-4 inline-block rounded-full bg-red-500 text-white font-bold px-4 py-3 hover:bg-white hover:text-black transition duration-500">Donar</a></li>
+                <li><a href="hablar.html"class="my-4 inline-block rounded-full bg-red-500 text-white font-bold px-4 py-3 hover:bg-white hover:text-black transition duration-500">Hablar</a></li>
             </ul>
         </div>
     </nav>
-
 
 
     <main>
         <div class="player grid lg:grid-cols-2 place-items-center grid-flow-row">
             <div class="">
 
-                <audio controls class="w-[360px]">
+                <audio controls >
                     <source src="files/kidinyou.mp3" />
-                    <track src="files/kidinyou.vtt" default label="ingles" lang="en" />
+                    <track src="files/kidinyou.mp3" default label="ingles" lang="en" />
                 </audio>
             </div>
 
-            <div class="pantalla text-center border-amber-400 border-4 opacity-75">
+            <div class="pantalla  text-center border-amber-400 border-4 opacity-75">
                 Ready!
             </div>
         </div>
+        <div class=" flex justify-center justify-items-center align-middle">
+           
+            <form class="agregar flex items-center max-w-sm mx-auto pb-2">   
+                
+                <div class="relative w-full">
+                    
+                    <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-orange-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                          </svg>
+                    </div>
+                    <div class="flex absolute -top-16 sm:inset-y-0 sm:-left-16 items-center">
+                        <a href="hablar.html">
 
-        <div class="tracker border-y-[24px] border-amber-800 text-yellow-500 text-opacity-80 bg-teal-900">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 hover:bg-orange-600 transition-all cursor-pointer rounded-full text-gray-800  rounded-t-full" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+                            </svg>
+                        </a>
+                       </div>
+                    <input type="text" id="add-texto" class=" text-sm rounded-lg  block w-full pl-10 p-2.5  bg-gray-700  placeholder-gray-400  text-orange-400 hover:placeholder-yellow-400  " autocomplete="off" placeholder="frases o palabra" required>
+                </div>
+                <button type="submit" class="p-2.5 ml-2 text-sm font-medium  bg-orange-600 rounded-lg border border-orange-700 hover:bg-orange-500 text-slate-900">
+                    
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+                    <span class="sr-only">Agregar</span>
+                </button>
+            </form>
         </div>
+            
+        <div class="tracker relative border-y-[24px] border-amber-800 text-yellow-500 text-opacity-80 bg-teal-900">
+        
+        </div>
+     
        
     </main>
     
       
+
+
+
+
         <script src="js/artes-oscuras.js"></script>
         <script>
             let menu =  document.getElementById('mobile-menu');
@@ -67,7 +102,15 @@
                 menu.classList.toggle('hidden');
 
             });
+
+
+
+
+            
         </script>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+      
     
 </body>
 </html>

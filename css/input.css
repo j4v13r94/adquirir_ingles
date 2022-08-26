@@ -2,11 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Works on Firefox */
+
 * {
     scrollbar-width: thin;
-    scrollbar-color: #b45309  #115e59
-    ;
+    scrollbar-color: #b45309  #115e59;
   }
   
   /* Works on Chrome, Edge, and Safari */
@@ -54,5 +53,31 @@ audio {
 }
 
 .link{
-    @apply text-white block p-5 font-bold hover:text-yellow-500
+    @apply text-white block p-5 font-bold hover:text-yellow-500;
+}
+
+
+.card 
+{
+ 
+  @apply  bg-teal-600 bg-opacity-30 flex items-center rounded border  pl-4 border-gray-700 p-3;
+}
+
+
+.mic {
+  @apply transition-all  duration-300 h-12 w-12 hover:bg-orange-600 hover:p-1 p-1 cursor-pointer rounded-full text-orange-400 sm:text-inherit  rounded-t-full;
+}
+
+.rec {
+  @apply h-8 w-8 animate-ping ml-2 bg-red-600 rounded-full cursor-not-allowed;
+}
+
+
+.exito  {
+  @apply bg-emerald-700 ;
+}
+
+.exito  label {
+  
+  text-decoration: line-through;
 }
