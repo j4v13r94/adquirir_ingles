@@ -37,6 +37,7 @@ sub.onsubmit = (event) => {
             icon: 'success',
             confirmButtonText: 'Perfect!'
         })
+        loadTexto()
     } else {
         Swal.fire({
             title: 'Error!',
@@ -97,7 +98,8 @@ voz.onresult = event => {
 
 const loadTexto = () => {
 
-    if (db.length > 0) {
+    if (db.length > 0 ) {
+
         let btn = document.querySelector('.tracker');
         let texto = document.getElementById('texto');
         let frag = document.createDocumentFragment();
@@ -120,7 +122,8 @@ const loadTexto = () => {
 
         }
         texto.textContent = ""
-        texto.appendChild(frag)
+        
+        texto.appendChild(frag) 
 
         btn.onclick = (e) => {
 
@@ -130,7 +133,7 @@ const loadTexto = () => {
                 loadTexto()
             }
         }
-    }
+    }else document.getElementById('texto').innerText = "";
 }
 
 
@@ -140,9 +143,13 @@ const deleteTexto = (id) => {
     console.log(id);
     let items = db.getItem("palabras").split(";")
     let newitem = items.filter(item => item != items[id])
-    db.setItem('palabras', newitem.toString().replace(/,/g, ';'));
 
+    if(newitem.length > 0) 
+    db.setItem('palabras', newitem.toString().replace(/,/g, ';'))
 
+    else
+        db.removeItem('palabras') 
+           
 }
 
 
