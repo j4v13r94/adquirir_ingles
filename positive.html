@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Positive affirmations</title>
+    <style>
+        body {
+            background: #ccc;
+        }
+        .card {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+            justify-content: center;
+            justify-items: center;
+        }
+        .box {
+            display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    background: darkcyan;
+    font-size: xx-large;
+    padding: 20px;
+    border-radius: 8px;
+    font-weight: 700;
+        }
+        .MIC {
+            font-size: 40px;
+            cursor: pointer;
+        }
+        
+    </style>
+</head>
+<body>
+    
+
+    <div class="contenedor">
+
+        <div class="card">
+
+
+
+        </div>
+    </div>
+
+
+    <script src="js/audios.js"></script>
+    <script>
+
+let texto;
+let rec;
+if(!("webkitSpeechRecognition" in window)){alert("Tu navegador no soparta la grabacion de voz")}
+else{
+    rec = new webkitSpeechRecognition();
+    rec.lang = "en-US"
+    rec.continuous = false
+    rec.onresult = event => {
+        let {transcript , confidence} = event.results[0][0];
+        transcript = transcript.toLowerCase().trim()
+        if(transcript == texto)
+        {
+           
+            
+        Swal.fire({
+                title: `Wow!, Suenas  un ${parseInt(confidence * 100,10)}% como nativo 😀`,
+                text: 'Has dicho : ' + transcript,
+                icon: 'success',
+                confirmButtonText: 'lets go!'
+            })
+        }
+        else {
+            Swal.fire({
+            title: 'Sigamos practicando!',
+            text: 'Has dicho : ' + transcript,
+            icon: 'error',
+            confirmButtonText: 'Ready!!'
+        })
+        }
+        
+       
+        
+    }
+}
+
+        const name = async (params) => {
+            
+            let card = document.querySelector('.card')
+            let frag = document.createDocumentFragment();
+
+        await Object.entries(audios).map( ([key,audio]) => {
+           // console.log(audio);
+            let div = document.createElement('DIV')
+            div.classList.add("box")
+            
+            div.innerHTML = `<audio data-id="${key}" controls >
+                    <source src="files/positive/${audio}.mp3" />
+                    <track src="files/positive/${audio}.mp3.vtt" default label="ingles" lang="en" />
+                </audio>
+                <span id="${key}"></span>
+                `
+                
+             frag.appendChild(div)
+                
+            })
+            
+            
+           await card.appendChild(frag)
+
+
+            let tracks = document.querySelectorAll('TRACK');
+            let Audios = document.querySelectorAll('audio');
+             let span = document.querySelectorAll('SPAN');
+
+             
+             setTimeout(()=>{
+
+                 Object.entries(Audios).map(([key,audi]) => {
+                     
+                     let cues = audi.querySelector('track').track.cues;
+                      
+                     if(cues.length > 0)
+                     {
+                        let span = document.getElementById(audi.dataset.id)
+
+                            Object.entries(cues).map( ([key,cue]) => {
+                                
+                                let spanTexto = document.createElement('span')
+                                let spanEspacio = document.createElement('span'); spanEspacio.textContent = " ";
+                                let texto = cue.text;
+                                spanTexto.style.cursor = "pointer"
+                                spanTexto.textContent = texto;
+                                spanTexto.onclick = () => audi.currentTime = cue.startTime;
+
+                                spanTexto.ondblclick = () => {
+                                    audi.play();
+                                    cue.onexit = (event) => { console.log("saliendo"); audi.pause(); event.currentTarget.onexit = null}
+                                
+                                }
+                                span.appendChild(spanTexto)
+                                span.appendChild(spanEspacio)
+
+                            })
+                        
+                            let spanTexto = span.textContent.trim().toLowerCase().replace(/[.]/g, '' );
+
+                            let spanMusic = document.createElement('span');
+
+                            spanMusic.textContent = "🎙️"
+                            spanMusic.classList.add("MIC")
+                            span.appendChild(spanMusic)
+
+                            spanMusic.onclick = ()=> {
+                               texto = spanTexto;
+                                rec.start();
+                            }
+                        
+
+                     }
+                    
+                        
+                    })
+                },1500);
+       
+   
+       
+        }
+            
+        name()
+        
+
+
+        
+
+      
+
+    </script>
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+</html>
